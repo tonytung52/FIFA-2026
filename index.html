@@ -1,0 +1,1172 @@
+# FIFA-2026
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 FIFA 世界盃 ✦ 音樂×足球×傳奇</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+TC:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060f;
+    --bg2: #060d1e;
+    --bg3: #0a1428;
+    --gold: #f5c518;
+    --gold2: #ffd700;
+    --cyan: #00e5ff;
+    --magenta: #ff0080;
+    --white: #f0f4ff;
+    --silver: #c0cce0;
+    --dim: #5a6a8a;
+    --card-bg: rgba(255,255,255,0.04);
+    --border: rgba(245,197,24,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Noto Serif TC', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    position: sticky; top: 0; z-index: 999;
+    background: linear-gradient(90deg, #000 0%, #0a1428 50%, #000 100%);
+    border-bottom: 1px solid var(--gold);
+    padding: 9px 0;
+    overflow: hidden;
+  }
+  .ticker-label {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    letter-spacing: 2px;
+    margin-right: 18px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 55s linear infinite;
+    font-size: 13px;
+    color: var(--cyan);
+    letter-spacing: 1px;
+    vertical-align: middle;
+  }
+  .ticker-track span { margin: 0 40px; color: var(--gold); }
+  @keyframes ticker {
+    0%   { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,100,255,0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255,0,128,0.08) 0%, transparent 60%),
+      var(--bg);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 6s ease-in-out infinite;
+  }
+  @keyframes gridPulse {
+    0%,100% { opacity: 0.5; }
+    50%      { opacity: 1; }
+  }
+  .ball-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-60%);
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pulse { 0%,100%{transform:translate(-50%,-60%) scale(1);}50%{transform:translate(-50%,-60%) scale(1.15);} }
+
+  .hero-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px; letter-spacing: 5px; color: var(--cyan);
+    text-transform: uppercase; margin-bottom: 18px;
+    animation: fadeUp 1s both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 140px);
+    line-height: 0.9;
+    background: linear-gradient(135deg, var(--gold2) 0%, #fff 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 4px;
+    animation: fadeUp 1s 0.2s both;
+    position: relative; z-index: 2;
+  }
+  .hero-sub {
+    font-size: clamp(18px, 3vw, 32px);
+    color: var(--cyan);
+    letter-spacing: 8px;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    animation: fadeUp 1s 0.4s both;
+  }
+  .hero-tagline {
+    margin-top: 28px;
+    font-size: 18px;
+    color: var(--silver);
+    max-width: 640px;
+    line-height: 1.8;
+    animation: fadeUp 1s 0.6s both;
+  }
+  .hero-tagline strong { color: var(--gold); }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    margin-top: 40px;
+    animation: fadeUp 1s 0.8s both;
+  }
+  .cta-btn {
+    padding: 14px 32px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px; letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    position: relative; overflow: hidden;
+  }
+  .cta-btn::before {
+    content:''; position:absolute; inset:0;
+    background: var(--gold); transform: translateX(-100%); transition: 0.3s;
+    z-index: 0;
+  }
+  .cta-btn:hover::before { transform: translateX(0); }
+  .cta-btn:hover { color: #000; }
+  .cta-btn span { position: relative; z-index: 1; }
+
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s 1.2s both;
+  }
+  .scroll-hint p { font-size: 10px; letter-spacing: 4px; color: var(--dim); }
+  .scroll-hint .arrow {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollArrow 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollArrow { 0%,100%{opacity:1;transform:scaleY(1);}50%{opacity:0.4;transform:scaleY(0.6);} }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+  .sec-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px; letter-spacing: 6px; color: var(--cyan);
+    text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sec-label::after { content:''; flex:1; height:1px; background: linear-gradient(to right, var(--cyan), transparent); }
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .sec-title .accent { color: var(--gold); }
+  .sec-desc {
+    color: var(--silver);
+    font-size: 15px;
+    line-height: 1.9;
+    max-width: 720px;
+    margin-bottom: 50px;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── THEME SONG ── */
+  .song-hero {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+  }
+  @media(max-width:768px){ .song-hero { grid-template-columns:1fr; } }
+
+  .song-cover {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #0a1e3a 0%, #1a0a2e 100%);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: transform 0.4s;
+  }
+  .song-cover:hover { transform: scale(1.02); }
+  .song-cover img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(1.3) contrast(1.1);
+    transition: filter 0.4s;
+  }
+  .song-cover:hover img { filter: saturate(1.6) contrast(1.2) brightness(1.1); }
+  .song-cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+  }
+  .song-cover-badge {
+    position: absolute; bottom: 20px; left: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px; letter-spacing: 3px; color: var(--gold);
+  }
+  .play-ring {
+    position: absolute;
+    width: 70px; height: 70px;
+    border: 2px solid rgba(245,197,24,0.6);
+    border-radius: 50%;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+  }
+  .song-cover:hover .play-ring {
+    background: rgba(245,197,24,0.2);
+    border-color: var(--gold);
+    transform: translate(-50%,-50%) scale(1.1);
+  }
+
+  .song-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px; letter-spacing: 4px; line-height: 1;
+    color: var(--gold);
+  }
+  .song-info .artists { font-size: 16px; color: var(--cyan); letter-spacing: 3px; margin: 12px 0 20px; }
+  .song-info p { color: var(--silver); line-height: 1.9; font-size: 14px; margin-bottom: 16px; }
+  .song-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .tag {
+    padding: 5px 14px;
+    border: 1px solid rgba(0,229,255,0.3);
+    color: var(--cyan); font-size: 11px; letter-spacing: 2px;
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .country-flags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .flag-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 14px; border-radius: 2px;
+    font-size: 13px; color: var(--silver);
+    cursor: default;
+    transition: all 0.3s;
+  }
+  .flag-item:hover { background: rgba(245,197,24,0.1); border-color: var(--gold); color: var(--gold); }
+
+  /* ── ARTIST CARDS ── */
+  .artists-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px;
+  }
+  .artist-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    background: var(--bg3);
+  }
+  .artist-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+    transition: all 0.6s ease;
+  }
+  .artist-card:hover img {
+    filter: grayscale(0%) contrast(1.2) saturate(1.3);
+    transform: scale(1.05);
+  }
+  .artist-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    transition: background 0.4s;
+  }
+  .artist-card:hover .artist-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.1) 100%);
+  }
+  .artist-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 30px 24px;
+  }
+  .artist-info .era {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px; letter-spacing: 4px;
+    color: var(--cyan); margin-bottom: 8px;
+  }
+  .artist-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px; letter-spacing: 2px; line-height: 1;
+    color: var(--white);
+  }
+  .artist-info .role { font-size: 13px; color: var(--gold); margin: 6px 0; }
+  .artist-info .desc {
+    font-size: 13px; color: var(--silver); line-height: 1.7;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s;
+    opacity: 0;
+  }
+  .artist-card:hover .desc { max-height: 200px; opacity: 1; }
+  .artist-quote {
+    display: none; margin-top: 12px;
+    font-size: 12px; color: rgba(245,197,24,0.8);
+    font-style: italic; line-height: 1.6;
+    border-left: 2px solid var(--gold);
+    padding-left: 12px;
+  }
+  .artist-card:hover .artist-quote { display: block; }
+
+  /* ── HALFTIME ── */
+  .halftime-banner {
+    background: linear-gradient(135deg, rgba(255,0,128,0.1) 0%, rgba(0,229,255,0.05) 50%, rgba(245,197,24,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  .halftime-banner::before {
+    content: 'HALFTIME SHOW';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px; letter-spacing: 10px;
+    color: rgba(255,255,255,0.015);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    white-space: nowrap; pointer-events: none;
+  }
+  .halftime-banner h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 60px);
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--magenta), var(--cyan), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+  .halftime-banner p { color: var(--silver); font-size: 15px; line-height: 1.9; max-width: 700px; margin: 0 auto; }
+  .venue-info {
+    display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .venue-pill {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.06); padding: 10px 20px;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+    font-size: 13px; color: var(--white);
+  }
+  .venue-pill .icon { font-size: 18px; }
+  .venue-pill .label { font-family:'Orbitron',sans-serif; font-size:9px; letter-spacing:2px; color:var(--dim); display:block; }
+
+  /* ── SETLIST ── */
+  .setlist-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+  }
+  .setlist-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 28px;
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .setlist-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    height: 2px; width: 0;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .setlist-card:hover::after { width: 100%; }
+  .setlist-card:hover { border-color: rgba(245,197,24,0.3); background: rgba(245,197,24,0.04); transform: translateY(-4px); }
+  .setlist-card .num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px; font-weight: 900; color: rgba(245,197,24,0.15);
+    position: absolute; top: 16px; right: 20px;
+    line-height: 1;
+  }
+  .setlist-card .performer { font-size: 10px; letter-spacing: 3px; color: var(--cyan); margin-bottom: 8px; font-family:'Orbitron',sans-serif; }
+  .setlist-card h4 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .setlist-card p { font-size: 13px; color: var(--silver); line-height: 1.8; }
+  .prob-bar {
+    margin-top: 16px;
+    height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden;
+  }
+  .prob-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), var(--gold));
+    border-radius: 2px;
+    animation: fillBar 2s 0.5s both;
+  }
+  @keyframes fillBar { from{width:0;} }
+  .prob-label { font-size: 11px; color: var(--gold); margin-top: 6px; font-family:'Orbitron',sans-serif; letter-spacing:1px; }
+
+  /* ── HISTORY ── */
+  .history-timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .history-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), var(--cyan), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .timeline-item:hover { padding-left: 32px; }
+  .timeline-item::before {
+    content: ''; position: absolute;
+    left: -44px; top: 8px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 12px var(--gold);
+    transition: all 0.3s;
+  }
+  .timeline-item:hover::before { transform: scale(1.4); box-shadow: 0 0 20px var(--gold); }
+  .timeline-year {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .timeline-item h4 { font-size: 22px; font-weight: 900; color: var(--white); margin-bottom: 8px; }
+  .timeline-item .tl-artist { font-size: 13px; color: var(--cyan); margin-bottom: 10px; }
+  .timeline-item p { font-size: 14px; color: var(--silver); line-height: 1.8; max-width: 680px; }
+  .timeline-item .hidden-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+    font-size: 13px; color: rgba(200,200,200,0.7); line-height: 1.8;
+    margin-top: 8px; border-left: 2px solid rgba(0,229,255,0.3); padding-left: 14px;
+  }
+  .timeline-item.open .hidden-detail { max-height: 200px; }
+
+  /* ── CHARITY ── */
+  .charity-box {
+    background: linear-gradient(135deg, rgba(0,229,255,0.05), rgba(245,197,24,0.05));
+    border: 1px solid rgba(0,229,255,0.2);
+    padding: 50px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .charity-box::before {
+    content: '$100M';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 250px; letter-spacing: 10px;
+    color: rgba(0,229,255,0.03);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+  .charity-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 60px);
+    color: var(--cyan); letter-spacing: 4px; margin-bottom: 20px;
+  }
+  .charity-box p { color: var(--silver); font-size: 15px; line-height: 1.9; max-width: 680px; margin: 0 auto; }
+  .charity-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+    color: var(--gold);
+    display: block;
+    animation: countUp 2s ease-out both;
+  }
+  .stat-label { font-size: 12px; color: var(--dim); letter-spacing: 2px; margin-top: 4px; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    max-width: 680px; width: 100%;
+    padding: 40px;
+    position: relative;
+    animation: modalIn 0.4s ease;
+  }
+  @keyframes modalIn { from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);} }
+  .modal-close {
+    position: absolute; top: 16px; right: 20px;
+    font-size: 24px; color: var(--dim); cursor: pointer;
+    transition: color 0.2s;
+    background: none; border: none;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-box h2 { font-family:'Bebas Neue',sans-serif; font-size: 40px; letter-spacing: 3px; color: var(--gold); margin-bottom: 6px; }
+  .modal-box .msub { font-size: 12px; letter-spacing: 3px; color: var(--cyan); margin-bottom: 20px; font-family:'Orbitron',sans-serif; }
+  .modal-box p { color: var(--silver); font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+  .modal-box ul { padding-left: 20px; }
+  .modal-box li { color: var(--silver); font-size: 14px; line-height: 2; }
+  .modal-box li strong { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--bg);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 6px; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 2px; color: var(--dim);
+    text-decoration: none; font-family:'Orbitron',sans-serif;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--cyan); }
+  .footer-credit {
+    font-size: 12px; color: var(--dim);
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 20px;
+  }
+  .footer-credit strong { color: var(--gold); }
+
+  /* ── PHOTO NOTE ── */
+  .photo-note {
+    background: rgba(255,165,0,0.06);
+    border: 1px solid rgba(255,165,0,0.25);
+    border-radius: 4px;
+    padding: 18px 24px;
+    margin-bottom: 30px;
+    font-size: 13px; color: rgba(255,200,100,0.9); line-height: 1.8;
+  }
+  .photo-note strong { color: var(--gold); font-size: 14px; }
+
+  /* ── BTS GRID ── */
+  .bts-album {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a0d2e 100%);
+    border: 1px solid rgba(147,0,255,0.25);
+    padding: 40px;
+    margin-bottom: 30px;
+  }
+  .bts-tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 30px; }
+  .track-item {
+    padding: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .track-item::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(135deg, rgba(147,0,255,0.1), transparent);
+    opacity: 0; transition: 0.3s;
+  }
+  .track-item:hover::before { opacity: 1; }
+  .track-item:hover { border-color: rgba(147,0,255,0.4); transform: translateY(-3px); }
+  .track-num { font-family:'Orbitron',sans-serif; font-size:11px; color: rgba(147,0,255,0.7); margin-bottom:8px; }
+  .track-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .track-desc { font-size: 12px; color: var(--silver); line-height: 1.7; }
+  .track-collab { font-size: 11px; color: var(--cyan); margin-top: 8px; }
+
+  /* ── NOTE BOX ── */
+  .img-needed {
+    display: inline-block;
+    background: rgba(255,0,128,0.1);
+    border: 1px dashed var(--magenta);
+    color: var(--magenta);
+    font-size: 11px; letter-spacing: 2px;
+    padding: 3px 10px; border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 12px;
+  }
+
+  /* ── PLACEHOLDER IMAGES ── */
+  .img-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--bg3), var(--bg2));
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .img-placeholder .ph-icon { font-size: 48px; margin-bottom: 12px; }
+  .img-placeholder .ph-title { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:var(--gold); }
+  .img-placeholder .ph-sub { font-size:11px; color:var(--dim); margin-top:4px; letter-spacing:2px; }
+
+  /* Responsive */
+  @media(max-width:600px){
+    .halftime-banner, .charity-box, .bts-album { padding: 24px; }
+    .song-info h2 { font-size: 40px; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity:0; transform:translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-label">⚽ 2026 FIFA</span>
+  <div class="ticker-track">
+    2026年美加墨世界盃 · 決賽日期：7月19日 · 地點：MetLife Stadium · 主題曲《Daï Daï》由夏奇拉 × Burna Boy 獻唱
+    <span>✦</span>
+    史上首次世界盃決賽中場秀 · 瑪丹娜 · 夏奇拉 · BTS 三大巨星同台
+    <span>✦</span>
+    BTS 新專輯《ARIRANG》強勢登頂 Billboard 200
+    <span>✦</span>
+    FIFA Global Citizen 教育基金目標籌款 1億美元 · 為全球弱勢兒童發聲
+    <span>✦</span>
+    2010年南非世界盃《Waka Waka》至今公認史上最經典世界盃神曲 · 夏奇拉再度出征
+    <span>✦</span>
+    芝麻街 × 布偶歷險記 經典角色驚喜同台 · 超越極限的娛樂新時代
+    <span>✦</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="ball-glow"></div>
+  <p class="hero-badge">⚽ FIFA WORLD CUP 2026 · USA · CANADA · MEXICO</p>
+  <h1 class="hero-title">FIFA<br>2026</h1>
+  <p class="hero-sub">體育 × 音樂 × 人類</p>
+  <p class="hero-tagline">
+    史上規模最大的世界盃，史上最震撼的娛樂創舉<br>
+    <strong>夏奇拉 × 瑪丹娜 × BTS</strong>，三個時代在同一舞台交匯
+  </p>
+  <div class="hero-cta">
+    <button class="cta-btn" onclick="document.getElementById('theme').scrollIntoView({behavior:'smooth'})"><span>🎵 主題曲</span></button>
+    <button class="cta-btn" onclick="document.getElementById('artists').scrollIntoView({behavior:'smooth'})"><span>🌟 藝人陣容</span></button>
+    <button class="cta-btn" onclick="document.getElementById('halftime').scrollIntoView({behavior:'smooth'})"><span>🎪 中場秀</span></button>
+    <button class="cta-btn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})"><span>📖 歷史脈絡</span></button>
+  </div>
+  <div class="scroll-hint">
+    <p>SCROLL</p>
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<!-- ======= THEME SONG ======= -->
+<div class="divider"></div>
+<section id="theme">
+  <div class="sec-label">官方主題曲</div>
+  <h2 class="sec-title">《DAÏ <span class="accent">DAÏ</span>》</h2>
+  <p class="sec-desc">2026年5月中旬，FIFA 官方正式發布世界盃官方主題曲，夏奇拉再度執掌足球音樂最高席位</p>
+
+  <div class="photo-note">
+    📸 <strong>建議圖片：</strong> 此處最適合放置「夏奇拉與 Burna Boy 合體封面照」或《Daï Daï》官方 MV 截圖。圖片應呈現兩位藝人同框、融合拉丁與非洲元素的視覺風格。
+  </div>
+
+  <div class="song-hero reveal">
+    <div class="song-cover" onclick="openModal('daidai')">
+      <div class="img-placeholder" style="aspect-ratio:1;border:none;margin:0;">
+        <div class="ph-icon">🎵</div>
+        <div class="ph-title">DAÏ DAÏ</div>
+        <div class="ph-sub">SHAKIRA × BURNA BOY · 2026 FIFA ANTHEM</div>
+      </div>
+      <div class="song-cover-overlay"></div>
+      <div class="song-cover-badge">🏆 OFFICIAL FIFA 2026 ANTHEM</div>
+      <div class="play-ring">▶</div>
+    </div>
+    <div class="song-info">
+      <h2>《Daï Daï》</h2>
+      <p class="artists">✦ SHAKIRA × BURNA BOY ✦</p>
+      <p>融合<strong style="color:var(--gold)">拉丁節奏</strong>與<strong style="color:var(--cyan)">非洲 Afrobeats</strong> 音樂風格，歌詞中直接點名巴西、烏拉圭、阿根廷、哥倫比亞、墨西哥、日本、韓國和荷蘭等足球強國。</p>
+      <p>傳達核心精神：<em style="color:var(--gold)">「無論過去受過什麼傷，回到賽場都能讓你更強大」</em>——跨越傷痛、團結奮起的人類故事。</p>
+      <div class="song-tags">
+        <span class="tag">拉丁流行</span>
+        <span class="tag">Afrobeats</span>
+        <span class="tag">2026 FIFA</span>
+        <span class="tag">全球首發</span>
+      </div>
+      <p style="margin-top:20px;font-size:13px;color:var(--dim);">詞中點名的足球強國：</p>
+      <div class="country-flags">
+        <span class="flag-item">🇧🇷 巴西</span>
+        <span class="flag-item">🇺🇾 烏拉圭</span>
+        <span class="flag-item">🇦🇷 阿根廷</span>
+        <span class="flag-item">🇨🇴 哥倫比亞</span>
+        <span class="flag-item">🇲🇽 墨西哥</span>
+        <span class="flag-item">🇯🇵 日本</span>
+        <span class="flag-item">🇰🇷 韓國</span>
+        <span class="flag-item">🇳🇱 荷蘭</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ARTISTS ======= -->
+<div class="divider"></div>
+<section id="artists">
+  <div class="sec-label">中場秀三大巨星</div>
+  <h2 class="sec-title">跨世代 <span class="accent">傳奇</span> 陣容</h2>
+  <p class="sec-desc">由 Coldplay 主唱 Chris Martin 擔任策展人，三位代表不同世代的巨星，共同書寫歷史</p>
+
+  <div class="photo-note">
+    📸 <strong>建議圖片（重要）：</strong> 以下三張藝人卡需要高清照片效果最佳。建議搜尋：<br>
+    ① <strong>夏奇拉</strong>：2026年舞台照或近期精彩演出照片（活力、拉丁風格）<br>
+    ② <strong>瑪丹娜</strong>：近年巡迴演唱會的舞台造型照（戲劇性燈光）<br>
+    ③ <strong>BTS 防彈少年團</strong>：2026年《ARIRANG》回歸全員合照
+  </div>
+
+  <div class="artists-grid reveal">
+
+    <!-- SHAKIRA -->
+    <div class="artist-card" onclick="openModal('shakira')">
+      <div class="img-placeholder" style="aspect-ratio:3/4;border:none;margin:0;">
+        <div class="ph-icon">💃</div>
+        <div class="ph-title">SHAKIRA</div>
+        <div class="ph-sub">建議放置近期演唱會舞台照</div>
+      </div>
+      <div class="artist-overlay"></div>
+      <div class="artist-info">
+        <p class="era">1990s → 2026 · 拉丁天后</p>
+        <h3>SHAKIRA</h3>
+        <p class="role">夏奇拉 · 世界盃女王</p>
+        <p class="desc">哥倫比亞裔流行天后，兩度為世界盃創作主題曲。2010年《Waka Waka》席捲全球，2026年以《Daï Daï》再度稱霸。</p>
+        <p class="artist-quote">「我希望在世界上最大的舞台上，投資兒童教育的重要性可以成為全場最矚目的焦點！」</p>
+      </div>
+    </div>
+
+    <!-- MADONNA -->
+    <div class="artist-card" onclick="openModal('madonna')">
+      <div class="img-placeholder" style="aspect-ratio:3/4;border:none;margin:0;">
+        <div class="ph-icon">👑</div>
+        <div class="ph-title">MADONNA</div>
+        <div class="ph-sub">建議放置近年巡演舞台照</div>
+      </div>
+      <div class="artist-overlay"></div>
+      <div class="artist-info">
+        <p class="era">1980s → 2026 · 流行天后</p>
+        <h3>MADONNA</h3>
+        <p class="role">瑪丹娜 · 流行音樂教母</p>
+        <p class="desc">流行音樂史上最具影響力的藝人之一，首度登上世界盃決賽舞台，帶來傳奇級的舞台張力。</p>
+        <p class="artist-quote">「沒有教育，孩子們在出發前就被剝奪了機會，這場演出對我意義深遠。」</p>
+      </div>
+    </div>
+
+    <!-- BTS -->
+    <div class="artist-card" onclick="openModal('bts')">
+      <div class="img-placeholder" style="aspect-ratio:3/4;border:none;margin:0;">
+        <div class="ph-icon">🎤</div>
+        <div class="ph-title">BTS</div>
+        <div class="ph-sub">建議放置《ARIRANG》回歸全員照</div>
+      </div>
+      <div class="artist-overlay"></div>
+      <div class="artist-info">
+        <p class="era">2010s → 2026 · K-POP 巨星</p>
+        <h3>BTS</h3>
+        <p class="role">防彈少年團 · 亞洲代表</p>
+        <p class="desc">全員退伍後強勢回歸，新專輯《ARIRANG》空降 Billboard 200 冠軍，以亞洲代表身份登上全球最高收視率舞台。</p>
+        <p class="artist-quote">「音樂是希望與和諧的通用語言，很榮幸能在世界盃上透過音樂與全球數百萬觀眾連結！」</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======= HALFTIME ======= -->
+<div class="divider"></div>
+<section id="halftime">
+  <div class="sec-label">史上首次</div>
+  <h2 class="sec-title">世界盃 <span class="accent">決賽中場秀</span></h2>
+
+  <div class="halftime-banner reveal">
+    <h2>⚡ WORLD CUP HALFTIME SHOW ⚡</h2>
+    <p>FIFA 官方與 Global Citizen 聯手打造，2026年7月19日於美國紐澤西大都會人壽體育場（MetLife Stadium）舉行。這是世界盃決賽<strong style="color:var(--gold)">史上第一次</strong>引進類似超級盃（Super Bowl）的「決賽中場秀」，預計吸引全球<strong style="color:var(--cyan)">數億人</strong>同時在線觀看。</p>
+    <div class="venue-info">
+      <div class="venue-pill"><span class="icon">📍</span><div><span>MetLife Stadium，紐澤西</span><span class="label">VENUE</span></div></div>
+      <div class="venue-pill"><span class="icon">📅</span><div><span>2026年7月19日</span><span class="label">DATE</span></div></div>
+      <div class="venue-pill"><span class="icon">⏱</span><div><span>約12–15分鐘</span><span class="label">DURATION</span></div></div>
+      <div class="venue-pill"><span class="icon">🎭</span><div><span>Chris Martin 策展</span><span class="label">CURATOR</span></div></div>
+    </div>
+  </div>
+
+  <div class="photo-note">
+    📸 <strong>建議圖片：</strong> MetLife Stadium 夜景大圖或超級盃中場秀舞台俯拍圖，視覺衝擊力強。亦可放置 Coldplay 演唱會全景照呼應策展人 Chris Martin。
+  </div>
+
+  <div class="sec-label" style="margin-top:50px;">曲目預測</div>
+  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;margin-bottom:30px;color:var(--white)">預測演出 <span style="color:var(--gold)">曲目</span></h3>
+
+  <div class="setlist-grid reveal">
+    <div class="setlist-card" onclick="openModal('swim')">
+      <div class="num">01</div>
+      <div class="performer">BTS · 新歌首秀</div>
+      <h4>《2.0》或《SWIM》</h4>
+      <p>睽違多年的首次合體國際演出，以節奏感最強的新曲點燃體育場，或以寬廣治癒的《SWIM》呼應全球團結主題。</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:95%"></div></div>
+      <div class="prob-label">▲ 機率：最高</div>
+    </div>
+    <div class="setlist-card" onclick="openModal('dynamite')">
+      <div class="num">02</div>
+      <div class="performer">BTS · 經典必唱</div>
+      <h4>《Dynamite》或《Butter》</h4>
+      <p>金氏世界紀錄保持曲目，全球傳唱度最高的英語神曲。男女老少皆能跟唱，絕對是炒熱億萬觀眾氣氛的終極武器。</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:90%"></div></div>
+      <div class="prob-label">▲ 機率：極高</div>
+    </div>
+    <div class="setlist-card" onclick="openModal('waka')">
+      <div class="num">03</div>
+      <div class="performer">夏奇拉 · 必備壓軸</div>
+      <h4>《Waka Waka》</h4>
+      <p>史上最成功的世界盃神曲，2010年南非世界盃的集體記憶。在2026年的世界盃舞台上響起，意義無可取代。</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:98%"></div></div>
+      <div class="prob-label">▲ 機率：幾乎確定</div>
+    </div>
+    <div class="setlist-card" onclick="openModal('daidai2')">
+      <div class="num">04</div>
+      <div class="performer">夏奇拉 · 世界首唱</div>
+      <h4>《Daï Daï》現場首唱</h4>
+      <p>官方宣布，夏奇拉將在此場演出現場首唱2026世界盃官方主題曲，與 Burna Boy 合體或單獨呈現，萬眾矚目。</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:100%"></div></div>
+      <div class="prob-label">▲ 機率：已官方確認</div>
+    </div>
+    <div class="setlist-card" onclick="openModal('universe')">
+      <div class="num">05</div>
+      <div class="performer">全員合唱 · 終場高潮</div>
+      <h4>《My Universe》全員合唱</h4>
+      <p>Coldplay × BTS 合作神曲，策展人 Chris Martin 現身帶領所有人合唱，為這場歷史性中場秀畫下完美句點。</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:80%"></div></div>
+      <div class="prob-label">▲ 機率：極高（媒體熱議）</div>
+    </div>
+    <div class="setlist-card" onclick="openModal('muppets')">
+      <div class="num">★</div>
+      <div class="performer">驚喜彩蛋</div>
+      <h4>芝麻街 × 布偶歷險記</h4>
+      <p>官方確認《芝麻街》艾摩與《布偶歷險記》科米蛙等角色驚喜同台，BTS 可能加入溫馨童趣互動橋段！</p>
+      <div class="prob-bar"><div class="prob-fill" style="width:70%"></div></div>
+      <div class="prob-label">▲ 已官方宣布</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= BTS ALBUM ======= -->
+<div class="divider"></div>
+<section id="bts">
+  <div class="sec-label">BTS 回歸大碟</div>
+  <h2 class="sec-title">《ARIRANG》 <span class="accent">阿里郎</span></h2>
+  <p class="sec-desc">2026年3月20日正式發行，全員退伍後首張合體大碟，名稱取自韓國傳統民謠，象徵根源、韌性與浴火重生</p>
+
+  <div class="bts-album reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+      <div>
+        <div class="img-needed">📸 建議圖片</div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🎶</div>
+          <div class="ph-title">BTS《ARIRANG》</div>
+          <div class="ph-sub">建議放置專輯封面官方照 · 全員回歸造型</div>
+        </div>
+      </div>
+      <div>
+        <p style="color:var(--silver);font-size:14px;line-height:1.9;margin-bottom:16px;">
+          《ARIRANG》是BTS全員服兵役後的浴火重生之作，打破多項 Spotify 串流紀錄，強勢空降 <strong style="color:var(--gold)">Billboard 200 專輯榜冠軍</strong>。
+        </p>
+        <p style="color:var(--silver);font-size:14px;line-height:1.9;margin-bottom:16px;">
+          豪華製作陣容包含 <strong style="color:var(--cyan)">Diplo、Flume、Ryan Tedder（共和世代）、Kevin Parker（Tame Impala）</strong> 以及御用製作人 Pdogg，展現極高國際音樂視野。
+        </p>
+        <p style="color:var(--silver);font-size:14px;line-height:1.9;">
+          音樂風格融合前衛 <strong style="color:var(--gold)">Pop、Hip-Hop</strong> 潮流，是一張兼具藝術深度與商業魅力的里程碑之作。
+        </p>
+      </div>
+    </div>
+    <div class="bts-tracks">
+      <div class="track-item" onclick="openModal('swim_track')">
+        <div class="track-num">TRACK 01 · 第一主打</div>
+        <div class="track-title">《SWIM》</div>
+        <div class="track-desc">將沉寂的服兵役時期比喻為「在深海中潛航」，如今終於浮出水面、再次與世界相擁。充滿律動感與治癒力。</div>
+      </div>
+      <div class="track-item" onclick="openModal('2_0_track')">
+        <div class="track-num">TRACK 02 · 第二主打</div>
+        <div class="track-title">《2.0》</div>
+        <div class="track-desc">由 Mike Will Made-It 製作，節奏強烈的嘻哈宣告——「BTS 2.0 時代」正式開啟，宣告更輝煌的下半場。</div>
+        <div class="track-collab">Prod. Mike Will Made-It</div>
+      </div>
+      <div class="track-item" onclick="openModal('merry_track')">
+        <div class="track-num">TRACK 03</div>
+        <div class="track-title">《Merry Go Round》</div>
+        <div class="track-desc">由 Kevin Parker 參與製作，帶有迷幻流行色彩，探討時間流逝與生命循環，備受樂評讚賞。</div>
+        <div class="track-collab">feat. Kevin Parker (Tame Impala)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HISTORY ======= -->
+<div class="divider"></div>
+<section id="history">
+  <div class="sec-label">歷史回顧</div>
+  <h2 class="sec-title">世界盃 <span class="accent">音樂傳奇</span></h2>
+  <p class="sec-desc">夏奇拉與世界盃的深厚淵源，以及這些歌曲如何成為人類共同的集體記憶</p>
+
+  <div class="photo-note">
+    📸 <strong>建議圖片：</strong> 夏奇拉在2010年南非世界盃開閉幕式舞台的精彩歷史照片，視覺張力極強，非常適合此處。
+  </div>
+
+  <div class="history-timeline reveal">
+
+    <div class="timeline-item" onclick="this.classList.toggle('open')">
+      <div class="timeline-year">2010 · 南非</div>
+      <h4>《Waka Waka (This Time for Africa)》</h4>
+      <p class="tl-artist">✦ 夏奇拉（Shakira）</p>
+      <p>2010年南非世界盃官方主題曲，當時紅遍全球，至今仍被公認為世界盃歷史上<strong style="color:var(--gold)">最經典、最成功</strong>的神曲之一。</p>
+      <div class="hidden-detail">歌名源自非洲傳統呼喊，結合南非音樂元素與夏奇拉的拉丁搖滾風格。MV 於開幕式現場拍攝，累積YouTube觀看次數突破數十億，是世界盃音樂史上無可超越的里程碑。（點擊收合）</div>
+    </div>
+
+    <div class="timeline-item" onclick="this.classList.toggle('open')">
+      <div class="timeline-year">2026 · 美加墨</div>
+      <h4>《Daï Daï》</h4>
+      <p class="tl-artist">✦ 夏奇拉（Shakira）× Burna Boy</p>
+      <p>2026年5月中旬，FIFA 官方正式發布。融合拉丁節奏與非洲 Afrobeats，夏奇拉以「世界盃女王」之姿再度稱霸全球音樂舞台。</p>
+      <div class="hidden-detail">Burna Boy 是尼日利亞的「非洲節拍（Afrobeats）」巨星，此次合作代表非洲與拉丁美洲兩大音樂強勢文化的完美融合，象徵世界盃精神的跨文化連結。（點擊收合）</div>
+    </div>
+
+    <div class="timeline-item" onclick="this.classList.toggle('open')">
+      <div class="timeline-year">2026 · 7月19日</div>
+      <h4>史上首次世界盃決賽中場秀</h4>
+      <p class="tl-artist">✦ 瑪丹娜 × 夏奇拉 × BTS × Chris Martin</p>
+      <p>FIFA 決定在2026年這屆擴大至48隊的史上最大規模世界盃上，徹底擁抱美式娛樂文化，開啟世界盃「超級盃化」的娛樂新時代。</p>
+      <div class="hidden-detail">在2025年俱樂部世界盃成功測試小型音樂表演後，FIFA 與 Global Citizen 攜手策劃此史詩級演出，同時以娛樂為媒介，為全球弱勢兒童教育籌款1億美元。（點擊收合）</div>
+    </div>
+
+  </div>
+  <p style="font-size:12px;color:var(--dim);margin-top:16px;letter-spacing:1px;">▲ 點擊各項目可展開詳細說明</p>
+</section>
+
+<!-- ======= CHARITY ======= -->
+<div class="divider"></div>
+<section id="charity">
+  <div class="sec-label">慈善核心</div>
+  <h2 class="sec-title">FIFA <span class="accent">Global Citizen</span></h2>
+
+  <div class="charity-box reveal">
+    <h3>兒童教育基金</h3>
+    <p>這場中場秀不只是娛樂——它的核心目標是為「FIFA Global Citizen 教育基金」籌集善款，幫助全球弱勢兒童獲得接受教育與接觸足球運動的機會。每張世界盃售出的門票都直接貢獻於這項使命。</p>
+    <div class="charity-stats">
+      <div class="stat-item">
+        <span class="stat-num">$100M</span>
+        <div class="stat-label">目標籌款金額（USD）</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">$1</span>
+        <div class="stat-label">每張門票直接捐款</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">48</span>
+        <div class="stat-label">史上最大規模，隊伍數</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">億+</span>
+        <div class="stat-label">預計全球同步收視人數</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="divider"></div>
+<footer>
+  <div class="footer-logo">⚽ FIFA 2026</div>
+  <div class="footer-links">
+    <a href="#theme">主題曲</a>
+    <a href="#artists">藝人陣容</a>
+    <a href="#halftime">中場秀</a>
+    <a href="#bts">BTS 專輯</a>
+    <a href="#history">歷史</a>
+    <a href="#charity">公益</a>
+  </div>
+  <p style="font-size:12px;color:var(--dim);line-height:1.8;max-width:600px;margin:0 auto 20px;">
+    本頁內容整合自 FIFA 官方公告、Associated Press、India Times 及相關國際媒體報導。<br>
+    圖片標註處建議自行補充官方授權高清照片以獲得最佳視覺效果。
+  </p>
+  <div class="footer-credit">Integrated by <strong>t-s-y</strong>，2026 &nbsp;·&nbsp; FIFA</div>
+</footer>
+
+<!-- ======= MODALS ======= -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+  /* ── MODAL DATA ── */
+  const modals = {
+    daidai: {
+      title: '《Daï Daï》',
+      sub: '2026 FIFA 官方主題曲',
+      content: `<p>由夏奇拉與奈及利亞 Afrobeats 巨星 <strong style="color:#00e5ff">Burna Boy</strong> 共同獻唱，於2026年5月中旬正式發布。</p>
+      <p>歌名「Daï Daï」源自非洲傳統語言，意涵「前行、繼續」的精神。歌曲融合了夏奇拉招牌的拉丁律動與 Burna Boy 強烈的非洲節拍，打造出一首跨文化的世界盃頌歌。</p>
+      <p><strong style="color:#f5c518">歌詞精神：</strong>「無論過去受過什麼傷，回到賽場都能讓你更強大」——以足球比喻人生的逆境重生。</p>`
+    },
+    shakira: {
+      title: 'SHAKIRA',
+      sub: '夏奇拉 · 世界盃女王 · 哥倫比亞',
+      content: `<p>夏奇拉（Shakira Isabel Mebarak Ripoll），1977年生於哥倫比亞，是拉丁流行音樂史上最具影響力的藝人之一。</p>
+      <ul>
+        <li><strong>2010年</strong>：南非世界盃主題曲《Waka Waka》，史上最成功的世界盃神曲</li>
+        <li><strong>2026年</strong>：美加墨世界盃主題曲《Daï Daï》，再度執掌足球音樂最高席位</li>
+        <li><strong>2026年7月19日</strong>：世界盃決賽中場秀，現場首唱《Daï Daï》</li>
+      </ul>
+      <p>她是唯一一位兩度為不同屆世界盃創作並演唱官方主題曲的藝人，「世界盃女王」名副其實。</p>`
+    },
+    madonna: {
+      title: 'MADONNA',
+      sub: '瑪丹娜 · 流行音樂教母 · 美國',
+      content: `<p>瑪丹娜（Madonna Louise Ciccone），1958年生於美國密西根州，流行音樂史上最具影響力和最暢銷的女性藝術家之一。</p>
+      <ul>
+        <li><strong>1980年代</strong>：以《Like a Virgin》《Material Girl》稱霸全球流行樂壇</li>
+        <li><strong>持續創新</strong>：數十年持續引領潮流，被譽為「流行音樂教母」</li>
+        <li><strong>2026年</strong>：首度登上世界盃決賽舞台，帶來傳奇級舞台張力</li>
+      </ul>
+      <p>她強調：「沒有教育，孩子們在出發前就被剝奪了機會，這場演出對我意義深遠。」</p>`
+    },
+    bts: {
+      title: 'BTS 防彈少年團',
+      sub: 'K-POP 全球巨星 · 韓國',
+      content: `<p>BTS（防彈少年團）由 RM、Jin、SUGA、J-Hope、Jimin、V、Jungkook 七名成員組成，2013年出道。</p>
+      <ul>
+        <li><strong>2020–2022年</strong>：《Dynamite》《Butter》連奪多週 Billboard Hot 100 冠軍，創韓國藝人史上最佳成績</li>
+        <li><strong>2022–2025年</strong>：全員陸續服兵役，粉絲（ARMY）全球守候</li>
+        <li><strong>2026年3月</strong>：全員回歸，新專輯《ARIRANG》打破多項串流紀錄，Billboard 200 冠軍</li>
+        <li><strong>2026年7月</strong>：代表亞洲登上世界盃決賽中場秀舞台</li>
+      </ul>`
+    },
+    swim: {
+      title: '《2.0》或《SWIM》',
+      sub: 'BTS · 新歌首秀預測',
+      content: `<p><strong style="color:#f5c518">《SWIM》</strong> —— 將沉寂的服兵役時期比喻為在深海中潛航，如今終於浮出水面，充滿治癒力與宇宙感。</p>
+      <p><strong style="color:#f5c518">《2.0》</strong> —— 由 Mike Will Made-It 製作，節奏強烈的嘻哈宣告，象徵「BTS 2.0 時代」的開啟。</p>
+      <p>這是 BTS 睽違多年後在國際頂級體育賽事上的首次公開合體演出，新歌首唱將是歷史性時刻。</p>`
+    },
+    dynamite: {
+      title: '《Dynamite》或《Butter》',
+      sub: 'BTS · 全球傳唱神曲',
+      content: `<p><strong style="color:#f5c518">《Dynamite》</strong>（2020年）—— BTS 首支全英語主打單曲，首週打破 YouTube 24小時觀看記錄，登上 Billboard Hot 100 冠軍，創韓國藝人史上首次。</p>
+      <p><strong style="color:#f5c518">《Butter》</strong>（2021年）—— 同樣為全英語單曲，在 Billboard Hot 100 蟬聯多週冠軍，成為當年最大流行金曲。</p>
+      <p>這兩首歌在世界盃這種全球性場合的傳唱度幾乎是必然選擇。</p>`
+    },
+    waka: {
+      title: '《Waka Waka》',
+      sub: '2010南非世界盃 · 夏奇拉 · 史上最經典',
+      content: `<p>《Waka Waka (This Time for Africa)》是2010年南非世界盃官方主題曲，由夏奇拉演唱。</p>
+      <p>歌名源自非洲傳統士兵呼喊，夏奇拉將其融合自己的拉丁搖滾風格，並邀請南非樂隊 Freshlyground 合作，完美呈現非洲精神。</p>
+      <p>至今仍被 FIFA 與全球媒體公認為<strong style="color:#f5c518">世界盃歷史上最經典、最成功的主題曲</strong>，成為無數足球迷最深的集體記憶。</p>`
+    },
+    daidai2: {
+      title: '《Daï Daï》現場首唱',
+      sub: '夏奇拉 · 官方確認節目',
+      content: `<p>FIFA 官方宣布，夏奇拉將在2026年7月19日世界盃決賽中場秀上，<strong style="color:#00e5ff">現場首唱</strong>2026世界盃官方主題曲《Daï Daï》。</p>
+      <p>這代表著數億觀眾將同時在電視機前/現場體驗這首歌在最盛大舞台上的首次完整現場演出，是本屆世界盃最值得期待的音樂時刻之一。</p>`
+    },
+    universe: {
+      title: '《My Universe》全員合唱',
+      sub: 'Coldplay × BTS · 終場高潮預測',
+      content: `<p>《My Universe》是 Coldplay 與 BTS 於2021年合作發行的神曲，兩隊攜手登上 Billboard Hot 100 第一名。</p>
+      <p>策展人 Chris Martin（Coldplay 主唱）與 BTS 私交極好。國際媒體普遍預測，決賽中場秀的壓軸環節，Chris Martin 將現身與 BTS、夏奇拉、瑪丹娜一同合唱這首代表全球連結的歌曲，為歷史性中場秀畫下完美句點。</p>`
+    },
+    muppets: {
+      title: '芝麻街 × 布偶歷險記',
+      sub: '驚喜彩蛋 · 官方確認',
+      content: `<p>FIFA 官方宣布，中場秀還將邀請《芝麻街（Sesame Street）》和《布偶歷險記（The Muppets）》的經典角色同台。</p>
+      <p>包括深受全球兒童喜愛的<strong style="color:#f5c518">艾摩（Elmo）</strong>與<strong style="color:#f5c518">科米蛙（Kermit the Frog）</strong>等角色亮相。</p>
+      <p>此安排呼應中場秀的慈善核心主題——<strong style="color:#00e5ff">為兒童教育發聲</strong>，用最溫馨的方式傳遞訊息給全球數億觀眾。</p>`
+    },
+    swim_track: {
+      title: '《SWIM》',
+      sub: 'BTS《ARIRANG》第一主打',
+      content: `<p>《SWIM》是《ARIRANG》專輯的主打單曲，歌詞以「在深海中潛航」比喻服兵役的沉寂時期——遠離舞台、隱入黑暗，但從未停止前進。</p>
+      <p>當士兵歸來，「終於浮出水面」的那一刻，化為歌聲中最有力的治癒。這首歌被譽為BTS迄今最成熟的情感表達之作。</p>`
+    },
+    '2_0_track': {
+      title: '《2.0》',
+      sub: 'BTS《ARIRANG》第二主打',
+      content: `<p>由美國頂級製作人 <strong style="color:#00e5ff">Mike Will Made-It</strong> 操刀，《2.0》是一首充滿力量的嘻哈宣告曲。</p>
+      <p>歌詞直接宣告：BTS 不是回來了，而是帶著更強大的版本回來了。「2.0」象徵的不是重啟，而是進化——以更完整的自己面對全世界。</p>`
+    },
+    merry_track: {
+      title: '《Merry Go Round》',
+      sub: 'BTS《ARIRANG》',
+      content: `<p>由 Tame Impala 的 <strong style="color:#00e5ff">Kevin Parker</strong> 參與製作，帶有強烈的迷幻流行（Psychedelic Pop）色彩。</p>
+      <p>歌曲以旋轉木馬比喻生命的循環——我們以為自己在前進，卻發現一切都在重複；然而每一次的循環，都帶來新的視角與成長。備受國際樂評高度讚賞，被認為是專輯中最具藝術性的作品。</p>`
+    }
+  };
+
+  function openModal(key) {
+    const d = modals[key];
+    if (!d) return;
+    document.getElementById('modal-content').innerHTML =
+      `<h2>${d.title}</h2><p class="msub">${d.sub}</p>${d.content}`;
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── TICKER PAUSE ON HOVER ── */
+  document.querySelector('.ticker-track').addEventListener('mouseenter', function() {
+    this.style.animationPlayState = 'paused';
+  });
+  document.querySelector('.ticker-track').addEventListener('mouseleave', function() {
+    this.style.animationPlayState = 'running';
+  });
+</script>
+</body>
+</html>
